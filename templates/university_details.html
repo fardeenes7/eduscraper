@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+<div class="w-full max-w-7xl mx-auto mt-16">
+    <form action="">
+        <section class="card bg-primary-90 py-32 px-8">
+            <img
+                src="/media/{{university.logo}}"
+                alt=""
+                class="h-24 {% if university.id == 2 %}invert{% endif %}"
+            />
+            <h1 class="mt-4 text-6xl font-bold">{{university}}</h1>
+            <a
+                href="{{university.url}}"
+                target="_blank"
+                class="inline-block mt-4 btn btn-primary px-6 py-4"
+                >Go To Wesbite</a
+            >
+        </section>
+        <section class="mt-16">
+            <h1 class="text-3xl font-bold text-center">
+                Programs Offered by {{university}}
+            </h1>
+        </section>
+        {% include 'components/search.html' %}
+        <section class="mt-8">
+            {% if university.programs.all|length == 0 %}
+            <p class="text-center text-lg font-bold">
+                No programs found for this university.
+            </p>
+            {% endif %}
+            <div
+                class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
+                {% for program in university.programs.all %}
+                <!---->
+                {% include 'components/program_card.html' %}
+                <!---->
+                {% endfor %}
+            </div>
+        </section>
+    </form>
+</div>
+
+{% endblock %}

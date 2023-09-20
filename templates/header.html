@@ -1,0 +1,51 @@
+<header
+    class="sticky top-4 w-full max-w-7xl mx-auto mb-4 flex items-center justify-between bg-primary-90 rounded-[40px] shadow-lg"
+>
+    <div>
+        <a
+            href="{% url 'app:index' %}"
+            class="block my-4 mx-12 font-bold text-3xl text-primary-10"
+            >EDUSCRAPER</a
+        >
+    </div>
+    <div>
+        <ul class="flex justify-between gap-4">
+            <li>
+                <a
+                    href="{% url 'app:program_list' %}"
+                    class="block btn btn-nav py-6 px-16 h-full w-full"
+                    >Programs</a
+                >
+            </li>
+            <li>
+                <a
+                    href="{% url 'app:university_list' %}"
+                    class="block btn btn-nav py-6 px-16 h-full w-full"
+                    >Universities</a
+                >
+            </li>
+            <li>
+                <a
+                    href="{% url 'app:about' %}"
+                    class="block btn btn-nav py-6 px-16 h-full w-full"
+                    >About</a
+                >
+            </li>
+        </ul>
+    </div>
+    <div class="">
+        {% if user.is_authenticated %}
+        <a
+            href="{% url 'app:account' %}"
+            class="block btn btn-nav py-6 px-12 h-full w-full"
+            >My Account</a
+        >
+        {% else %}
+        <a
+            href="{% url 'app:login' %}"
+            class="block btn btn-nav py-6 px-12 h-full w-full"
+            >Login</a
+        >
+        {% endif %}
+    </div>
+</header>

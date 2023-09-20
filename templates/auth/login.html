@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block content %}
+<div class="w-full mt-12 max-w-7xl mx-auto mt-36">
+    <div
+        class="w-full max-w-lg mx-auto card bg-violet-50 border-2 border-black p-8"
+    >
+        <h1 class="text-3xl text-center font-bold">Login</h1>
+        <form class="" action="" method="POST">
+            {% csrf_token %}
+            <label
+                for="Username"
+                class="mt-8 relative block rounded-md border-2 border-primary-50 shadow-sm focus-within:border-primary-40 focus-within:ring-1 focus-within:ring-primary-40"
+            >
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                    placeholder="name@gmail.com"
+                />
+
+                <span
+                    class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-violet-50 p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                >
+                    Email
+                </span>
+            </label>
+            <label
+                for="password"
+                class="mt-4 relative block rounded-md border-2 border-primary-50 shadow-sm focus-within:border-primary-40 focus-within:ring-1 focus-within:ring-primary-40"
+            >
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                    placeholder="password"
+                />
+
+                <span
+                    class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-violet-50 p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                >
+                    Password
+                </span>
+            </label>
+            {% if error %}
+            <p class="mt-4 text-xs font-bold text-red-600">{{error}}</p>
+            {% endif %}
+            <button class="mt-4 w-full py-3 btn btn-primary">Log in</button>
+        </form>
+        <p class="mt-4 font-bold text-sm text-primary-40">
+            Dont' have an account?
+            <a href="{% url 'app:register' %}" class="text-primary-50 underline"
+                >Create account now</a
+            >
+        </p>
+    </div>
+</div>
+{% endblock %}

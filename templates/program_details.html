@@ -1,0 +1,87 @@
+{% extends "base.html" %} {% block content %}
+<div class="w-full max-w-7xl mx-auto mt-12">
+    {% load custom_filters %}
+    <section class="relative card bg-primary-90 py-32 px-8">
+        <h1 class="mt-4 text-6xl font-bold">{{program.title}}</h1>
+         <a
+                href="{{program.url}}"
+                target="_blank"
+                class="inline-block mt-4 btn btn-primary px-6 py-4"
+                >Go To Program Wesbite</a
+            >
+             <button
+                class="absolute bottom-8 right-8"
+                onclick="save_program({{program.id}})"
+            >
+                <i
+                    id="save-button-{{program.id}}"
+                    class="text-3xl {% if program|is_saved:user %}fa-solid{% else %}fa-regular{% endif %} fa-heart"
+                ></i>
+            </button>
+    </section>
+    <div class="mt-4 grid lg:grid-cols-3 gap-4">
+        <section class="col-span-2 grid gap-4">
+            {% if program.details %}
+            <div class="card bg-primary-90 p-8">
+                <article class="prose lg:prose-lg">
+                    <h2 class="text-3xl font-bold">Description</h1>
+                    {{program.details | safe}}
+                </article>
+            </div>
+            {% endif %}
+            {% if program.requirements %}
+            <div class="card bg-primary-90 p-8">
+                <article class="prose lg:prose-lg">
+                    <h2 class="text-3xl font-bold">Requirements</h1>
+                    {{program.requirements | safe}}
+                </article>
+            </div>
+            {% endif %}
+            {% if program.apply_instructions %}
+            <div class="card bg-primary-90 p-8">
+                <article class="prose lg:prose-lg">
+                    <h2 class="text-3xl font-bold">Apply Instructions</h1>
+                    {{program.apply_instructions | safe}}
+                </article>
+            </div>
+            {% endif %}
+        </section>
+        <section class="flex flex-col gap-4">
+            {% include 'components/university_card.html' %}
+            {% if program.duration %}
+            <div class="card bg-primary-90 p-8">
+                <article class="prose lg:prose-lg">
+                    <h2 class="text-3xl font-bold">Program Duration</h1>
+                    {{program.duration | safe}}
+                </article>
+            </div>
+            {% endif %}
+            <div class="card bg-primary-90 p-8">
+                <article class=" prose lg:prose-lg">
+                    <h2 class="text-3xl font-bold">Degrees Offered</h1>
+                    {{program.degree | safe}}
+                </article>
+            </div>
+            {% if program.contact %}
+            <div class="card bg-primary-90 p-8">
+                <article class="prose lg:prose-lg">
+                    <h2 class="text-3xl font-bold">Contact</h1>
+                    {{program.contact | safe}}
+                </article>
+            </div>
+            {% endif %}
+            {% if program.apply_link %}
+            <div class="card bg-primary-90 p-8">
+                <article class="prose lg:prose-lg">
+                    <h2 class="text-3xl font-bold">Contact</h1>
+                    {{program.apply_link | safe}}
+                </article>
+            </div>
+            {% endif %}
+            
+
+        </section>
+    </div>
+</div>
+
+{% endblock %}

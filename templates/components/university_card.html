@@ -1,0 +1,20 @@
+{% load static %}
+<div
+    class="card bg-primary-90 hover:bg-primary-80 transition duration-300 ease-in-out"
+>
+    <a href="{% url 'app:university_details' university.id %}">
+        <div
+            class="card h-48 flex justify-center items-center bg-white bg-blend-overlay bg-cover bg-center"
+        >
+            <img
+                src="/media/{{university.logo}}"
+                alt=""
+                class="h-1/2 {% if university.id == 2 %}invert{% endif %}"
+            />
+        </div>
+        <div class="p-4">
+            <h2 class="text-lg font-bold">{{university}}</h2>
+        </div>
+    </a>
+</div>
+<script></script>

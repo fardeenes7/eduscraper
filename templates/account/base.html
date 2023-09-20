@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="w-full mt-12 max-w-7xl mx-auto grid grid-cols-4 gap-4">
+    <div>
+        <div class="p-2 bg-primary-90 card">
+            <ul class="flex flex-col text-gray-600 font-bold text-sm">
+                <a
+                    href="{% url 'app:account' %}"
+                    class="flex items-center p-4 rounded-[24px] hover:bg-primary-80 active:bg-primary-80 hover:text-primary-30"
+                >
+                    <i class="fa-solid fa-user w-4 mx-2"></i>My Account
+                </a>
+                <a
+                    href="{% url 'app:saved_programs' %}"
+                    class="flex items-center p-4 rounded-[24px] hover:bg-primary-80 active:bg-primary-80 hover:text-primary-30"
+                >
+                    <i class="fa-solid fa-user w-4 mx-2"></i>Saved Programs
+                </a>
+                <a
+                    href="{% url 'app:logout' %}"
+                    class="flex items-center p-4 rounded-[24px] hover:bg-primary-80 active:bg-primary-80 hover:text-primary-30"
+                >
+                    <i class="fa-solid fa-user w-4 mx-2"></i>Logout
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div class="col-span-3">{% block account %}{% endblock %}</div>
+</div>
+{% endblock %}

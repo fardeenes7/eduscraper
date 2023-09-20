@@ -1,0 +1,80 @@
+<section class="mt-8 card rounded-[40rem] flex justify-between">
+    <div
+        class="relative rounded-[40rem] bg-primary-90 flex items-center text-sm"
+    >
+        <input
+            type="text"
+            class="border-none bg-transparent rounded-[40rem] w-full h-full p-4 focus:outline-none focus:ring focus:ring-violet-300"
+            placeholder="Search"
+            id="search"
+            name="q"
+            value="{{request.GET.q}}"
+        />
+        <button
+            class="absolute right-0 btn btn-primary h-12 w-12 flex flex-col justify-center items-center rounded-full"
+        >
+            <i class="fa-solid fa-search"></i>
+        </button>
+    </div>
+    {% if not hide_university %}
+    <div
+        class="relative rounded-[40rem] bg-primary-90 flex items-center text-sm"
+    >
+        <select
+            class="border-none bg-transparent rounded-[40rem] w-full h-full py-4 px-8 focus:outline-none focus:ring focus:ring-violet-300 font-bold"
+            id="university"
+            name="university"
+            onchange="this.form.submit()"
+        >
+            <option value="">Select University to Filter</option>
+            <option value="">All</option>
+            {% for university in universities %}
+            <option value="{{university.id}}" {% if request.GET.university == university.id|stringformat:'i' %}selected {% endif %}>{{university}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    {% endif %}
+    {% if not hide_degree %}
+    <div
+        class="relative rounded-[40rem] bg-primary-90 flex items-center text-sm"
+    >
+        <select
+            class="border-none bg-transparent rounded-[40rem] w-full h-full py-4 px-8 focus:outline-none focus:ring focus:ring-violet-300 font-bold"
+            name="degree"
+            id="degree"
+            onchange="this.form.submit()"
+        >
+            <option value="">Select Degree to Filter</option>
+            <option value="">All</option>
+            <option value="bsc" {% if request.GET.degree == 'bsc' %}selected {% endif %}>BSc.</option>
+            <option value="msc" {% if request.GET.degree == 'msc' %}selected {% endif %}>MSc.</option>
+            <option value="ma" {% if request.GET.degree == 'ma' %}selected {% endif %}>MA</option>
+            <option value="mba" {% if request.GET.degree == 'mba' %}selected {% endif %}>MBA</option>
+            <option value="mcom" {% if request.GET.degree == 'mcom' %}selected {% endif %}>MCOM</option>
+            <option value="phd" {% if request.GET.degree == 'phd' %}selected {% endif %}>PhD.</option>
+        </select>
+    </div>
+    {% endif %}
+    <div
+        class="text-sm"
+    >
+            <button
+                class=" btn btn-primary h-full px-16"
+                onclick="resetForm(); this.form.submit();"
+            >
+                Reset
+            </button>
+    </div>
+</section>
+
+<script>
+    function resetForm() {
+        document.getElementById("search").value = "";
+        {% if not hide_university %}
+        document.getElementById("university").value = "";
+        {% endif %}
+        {% if not hide_degree %}
+        document.getElementById("degree").value = "";
+        {% endif %}
+    }
+</script>

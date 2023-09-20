@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block content %}
+<div class="w-full max-w-7xl mx-auto mt-12">
+    {% load static %}
+    <section
+        class="card bg-primary-90 py-32 px-8 bg-[url('{% static 'images/bg/b.webp' %}')] bg-cover bg-top bg-no-repeat"
+    >
+        <h1 class="text-6xl font-bold">About Eduscraper</h1>
+    </section>
+    <section class="my-4 mx-auto">
+        <article class="mx-auto text-justify prose lg:prose-lg xl:prose-xl">
+            <p>
+                Welcome to Edu Scraper, your ultimate source for educational
+                data from universities worldwide. We are passionate about
+                collecting and curating valuable information to empower
+                students, researchers, and educators.
+            </p>
+            <p>
+                Our mission is to provide a comprehensive database of
+                university-related data, including courses, faculty information,
+                admissions, and more. We strive to make this data easily
+                accessible and user-friendly through our website.
+            </p>
+            <p>
+                With Edu Scraper, you can explore universities, compare
+                programs, and gain insights into the educational landscape.
+                Whether you're seeking to find the perfect institution for your
+                studies or conducting research in the field of education, our
+                platform offers a wealth of data to support your journey.
+            </p>
+            <p>
+                We are dedicated to maintaining data accuracy and regularly
+                updating our database to ensure that you have access to the most
+                current and reliable information. Our team works tirelessly to
+                gather data from various sources, including university websites,
+                official publications, and other reputable educational
+                resources.
+            </p>
+            <p>
+                Join us in harnessing the power of data to unlock new
+                educational opportunities and make informed decisions. Explore
+                our website, discover the vast world of academia, and embark on
+                your educational adventure with Edu Scraper.
+            </p>
+        </article>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load static %} {% load custom_filters %}
+
+<div
+    class="card bg-primary-90 hover:bg-primary-80 transition duration-300 ease-in-out"
+>
+    <div
+        id="program-card-image-{{program.id}}"
+        class="card h-48 flex justify-center items-center bg-secondary-80/50 bg-blend-overlay bg-cover bg-center"
+    >
+        <p class="text-slate-600 text-4xl text-center mt-2 font-bold">
+            {{program.title}}
+        </p>
+    </div>
+    <div class="p-4 relative">
+        <button
+            class="absolute right-4 top-4"
+            onclick="save_program({{program.id}})"
+        >
+            <i
+                id="save-button-{{program.id}}"
+                class="text-2xl {% if user.is_authenticated %}{% if program|is_saved:user %}fa-solid{% else %}fa-regular{% endif %}{% else %}fa-regular{% endif %} fa-heart"
+            ></i>
+        </button>
+        <a
+            href="{% url 'app:program_details' program.id %}"
+            class="hover:underline"
+        >
+            <h2 class="text-lg font-bold mr-4">{{program.title}}</h2>
+        </a>
+        <a
+            href="{% url 'app:university_details' program.university.id %}"
+            class="mt-4 flex items-center gap-4 hover:underline"
+        >
+            <img
+                src="/media/{{program.university.logo}}"
+                alt=""
+                class="h-8 {% if program.university.id == 2 %}invert{% endif %}"
+            />{{program.university}}
+        </a>
+    </div>
+</div>
+<script>
+    function setRandomBackground() {
+        var divElement = document.getElementById(
+            "program-card-image-{{program.id}}"
+        );
+        var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
+        var randomIndex = Math.floor(Math.random() * images.length);
+        var randomImage = images[randomIndex];
+        var imageUrl = "{% static 'images/bg/' %}" + randomImage;
+        divElement.style.backgroundImage = "url(" + imageUrl + ")";
+    }
+
+    setRandomBackground();
+</script>

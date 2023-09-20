@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Eduscraper</title>
+        <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio,forms,typography,line-clamp"></script>
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css"
+            integrity="sha512-Z0kTB03S7BU+JFU0nw9mjSBcRnZm2Bvm0tzOX9/OuOuz01XQfOpa0w/N9u6Jf2f1OAdegdIPWZ9nIZZ+keEvBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+            rel="stylesheet"
+        />
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            inter: ["Inter", "sans-serif"],
+                        },
+                        colors: ({ colors }) => ({
+                            primary: {
+                                10: "#21005D",
+                                20: "#381E72",
+                                30: "#4F378A",
+                                40: "#6750A4",
+                                50: "#7F67BE",
+                                60: "#9A82DB",
+                                70: "#B69DF8",
+                                80: "#D0BCFF",
+                                90: "#EADDFF",
+                            },
+                            secondary: {
+                                10: "#31111D",
+                                20: "#332D41",
+                                30: "#4A4458",
+                                40: "#625B71",
+                                50: "#7A7289",
+                                60: "#958DA5",
+                                70: "#B0A7C0",
+                                80: "#CCC2DC",
+                                90: "#E8DEF8",
+                            },
+                        }),
+                    },
+                },
+            };
+        </script>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    </head>
+    <body class="h-full font-inter flex flex-col min-h-screen">
+        {% include 'header.html' %}
+        <!---->
+        {% block content %}{% endblock %}
+        <!---->
+        {% include 'footer.html' %}
+        <script>
+            function save_program(program_id) {
+                url = "/api/save_program/?program=" + program_id;
+                fetch(url)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        window.alert(data.message);
+                        saveButton = document.getElementById(
+                            "save-button-" + program_id
+                        );
+                        if (data.saved) {
+                            saveButton.classList.remove("fa-regular");
+                            saveButton.classList.add("fa-solid");
+                        } else {
+                            saveButton.classList.remove("fa-solid");
+                            saveButton.classList.add("fa-regular");
+                        }
+                    })
+                    .catch((error) => {
+                        window.alert(data.message);
+                    });
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+<div class="w-full max-w-7xl mx-auto mt-8 mb-4">
+    {% load static %}
+    <form action="">
+        <section
+            class="card bg-primary-90 py-32 px-8 bg-[url('{% static 'images/bg/c.webp' %}')] bg-cover bg-top bg-no-repeat"
+        >
+            <h1 class="text-6xl font-bold">Explore Programs</h1>
+            <p class="mt-4 font-bold">
+                List of programs we have in our database. Sort and search
+                according to your needs
+            </p>
+        </section>
+        {% include 'components/search.html' %}
+        <section class="mt-8">
+            {% if programs|length == 0 %}
+            <p class="text-center text-lg font-bold">
+                No programs found for your search. Please try again with
+                different keywords
+            </p>
+            {% endif %}
+            <div
+                class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
+                {% for program in programs %}
+                <!---->
+                {% include 'components/program_card.html' %}
+                <!---->
+                {% endfor %}
+            </div>
+        </section>
+    </form>
+</div>
+
+{% endblock %}

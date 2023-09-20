@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+<div class="w-full max-w-7xl mx-auto mt-12">
+    {% load static %}
+    <section
+        class="card bg-primary-90 py-32 px-8 bg-[url('{% static 'images/bg/c.webp' %}')] bg-cover bg-top bg-no-repeat"
+    >
+        <h1 class="mt-4 text-6xl font-bold">List of Universities</h1>
+    </section>
+    <section class="mt-8">
+        {% if universities|length == 0 %}
+        <p class="text-center text-lg font-bold">
+            No universities found for your search. Please try again with
+            different keywords
+        </p>
+        {% endif %}
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for university in universities %}
+            <!---->
+            {% include 'components/university_card.html' %}
+            <!---->
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+{% endblock %}

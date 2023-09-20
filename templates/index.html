@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block content %}
+<div class="w-full max-w-7xl mx-auto mt-8">
+    {% load static %}
+    <section
+        class="py-48 px-8 card bg-primary-90 bg-[url('{% static 'images/bg/a.webp' %}')] bg-cover bg-center bg-no-repeat"
+    >
+        <h1 class="text-4xl lg:text-6xl font-bold text-slate-700">
+            Discover Data from<br />
+            Universities Worldwide
+        </h1>
+    </section>
+    <section class="mt-16">
+        <h1 class="text-center text-4xl font-bold text-slate-600">
+            Top Viewed Programs
+        </h1>
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for program in programs %}
+            <!---->
+            {% include 'components/program_card.html' %}
+            <!---->
+            {% endfor %}
+        </div>
+    </section>
+    <section class="mt-16">
+        <h1 class="mt-12 text-center text-4xl font-bold text-slate-600">
+            Top Universities
+        </h1>
+    </section>
+    <section class="my-8">
+        {% if universities|length == 0 %}
+        <p class="text-center text-lg font-bold">
+            No universities found for your search. Please try again with
+            different keywords
+        </p>
+        {% endif %}
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for university in universities %}
+            <!---->
+            {% include 'components/university_card.html' %}
+            <!---->
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+.card {
+    padding: 10px;
+    border-radius: 24px;
+    box-shadow: inset;
+    overflow: hidden;
+}
+
+.card-rounded {
+    border-radius: 2rem;
+}
+
+.btn {
+    border-radius: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #6750a4;
+}
+
+.btn-primary:hover {
+    background-color: #4f378a;
+}
+
+.btn-secondary {
+    background-color: #625b71;
+}
+
+.btn-secondary:hover {
+    background-color: #4a4458;
+}
+
+.btn-nav {
+    background-color: transparent;
+    color: #4a4458;
+}
+
+.btn-nav:hover {
+    background-color: #6750a4;
+    color: white;
+}
+
+.btn-nav:active {
+    background-color: #4f378a;
+    color: white;
+}
+
+section {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+}

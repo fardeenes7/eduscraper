@@ -1,0 +1,131 @@
+{% extends 'base.html' %} {% block content %}
+<div class="w-full mt-12 max-w-7xl mx-auto mt-36">
+    <div
+        class="w-full max-w-2xl mx-auto card bg-violet-50 border-2 border-black p-8"
+    >
+        <h1 class="text-3xl text-center font-bold mb-8">Create New Account</h1>
+        <form
+            class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            action=""
+            method="POST"
+        >
+            {% csrf_token %}
+            <label
+                for="first-name"
+                class="relative block rounded-md border-2 border-primary-50 shadow-sm focus-within:border-primary-40 focus-within:ring-1 focus-within:ring-primary-40"
+            >
+                <input
+                    type="text"
+                    id="first-name"
+                    name="first_name"
+                    class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                    placeholder="First Name"
+                    pattern="[A-Za-z-. ]{3,32}"
+                    title="First name must be minimum 3 characters long and can only contain letters, hyphens and spaces."
+                    value="{{request.POST.first_name}}"
+                />
+
+                <span
+                    class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-violet-50 p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                >
+                    First Name
+                </span>
+            </label>
+            <label
+                for="last-name"
+                class="relative block rounded-md border-2 border-primary-50 shadow-sm focus-within:border-primary-40 focus-within:ring-1 focus-within:ring-primary-40"
+            >
+                <input
+                    type="text"
+                    id="last-name"
+                    name="last_name"
+                    class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                    placeholder="Last Name"
+                    pattern="[A-Za-z-. ]{3,32}"
+                    title="Last name must be minimum 3 characters long and can only contain letters, hyphens and spaces."
+                    value="{{request.POST.last_name}}"
+                />
+
+                <span
+                    class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-violet-50 p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                >
+                    Last Name
+                </span>
+            </label>
+            <label
+                for="email"
+                class="col-span-2 relative block rounded-md border-2 border-primary-50 shadow-sm focus-within:border-primary-40 focus-within:ring-1 focus-within:ring-primary-40"
+            >
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="peer w-full border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                    placeholder="name@gmail.com"
+                    required
+                    value="{{request.POST.email}}"
+                />
+
+                <span
+                    class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-violet-50 p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                >
+                    Email
+                </span>
+            </label>
+            <label
+                for="password"
+                class="relative block rounded-md border-2 border-primary-50 shadow-sm focus-within:border-primary-40 focus-within:ring-1 focus-within:ring-primary-40"
+            >
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                    placeholder="password"
+                    required
+                />
+
+                <span
+                    class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-violet-50 p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                >
+                    Password
+                </span>
+            </label>
+            <label
+                for="password"
+                class="relative block rounded-md border-2 border-primary-50 shadow-sm focus-within:border-primary-40 focus-within:ring-1 focus-within:ring-primary-40"
+            >
+                <input
+                    type="password"
+                    id="password2"
+                    name="password2"
+                    class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                    placeholder="password again"
+                    required
+                />
+
+                <span
+                    class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-violet-50 p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                >
+                    Password Again
+                </span>
+            </label>
+
+            {% if error %}
+            <p class="col-span-2 mt-4 text-xs font-bold text-red-600">
+                {{error}}
+            </p>
+            {% endif %}
+            <button class="col-span-2 mt-4 w-full py-3 btn btn-primary">
+                Log in
+            </button>
+        </form>
+        <p class="mt-4 font-bold text-sm text-primary-40">
+            Already have an account?
+            <a href="{% url 'app:login' %}" class="text-primary-50 underline"
+                >Log in</a
+            >
+        </p>
+    </div>
+</div>
+{% endblock %}

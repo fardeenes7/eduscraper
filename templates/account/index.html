@@ -1,0 +1,56 @@
+{% extends "account/base.html" %} {% block account %}
+<section class="card bg-primary-90 p-8">
+    <h1 class="text-4xl font-bold">My Account</h1>
+</section>
+<section class="card border-2 border-black p-8 mt-4">
+    <h2 class="text-2xl font-bold">Profile</h2>
+    <form method="POST" class="grid lg:grid-cols-2 gap-y-8 gap-x-4 pt-4">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="update_profile" />
+        <div class="">
+            <label for="first_name" class="block text-lg font-bold">
+                First Name
+            </label>
+            <input
+                type="text"
+                name="first_name"
+                id="first_name"
+                class="mt-2 p-2 w-full rounded-md border-2 border-black"
+                value="{{ user.first_name }}"
+            />
+        </div>
+        <div class="">
+            <label for="last_name" class="block text-lg font-bold">
+                Last Name
+            </label>
+            <input
+                type="text"
+                name="last_name"
+                id="last_name"
+                class="mt-2 p-2 w-full rounded-md border-2 border-black"
+                value="{{ user.last_name }}"
+            />
+        </div>
+        <div class="col-span-2">
+            <label for="email" class="block text-lg font-bold">Email</label>
+            <input
+                type="email"
+                name="email"
+                id="email"
+                class="mt-2 p-2 w-full rounded-md border-2 border-black"
+                value="{{ user.email }}"
+            />
+        </div>
+
+        <div class="">
+            <button
+                class="btn btn-primary px-8 py-4"
+                onclick="this.form.submit()"
+            >
+                Update Profile
+            </button>
+        </div>
+    </form>
+</section>
+
+{% endblock %}
