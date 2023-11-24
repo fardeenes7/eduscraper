@@ -2,7 +2,6 @@
 
 Education scraper for some Universities. Scrapes the course catalog and the schedule for all courses.
 
-
 ## Installation and Usage
 
 ```
@@ -25,4 +24,4 @@ python manage.py
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
