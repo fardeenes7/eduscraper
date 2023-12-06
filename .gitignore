@@ -7,7 +7,7 @@ db.sqlite3
 media
 
 # Static Root #
-staticfiles/
+staticfiles_build/
 # Backup files # 
 *.bak 
 

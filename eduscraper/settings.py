@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG')=="True" else False
 
-ALLOWED_HOSTS = ['.vercel.app', '.fardiin.com']
+ALLOWED_HOSTS = ['eduscraper.vercel.app', 'eduscraper.fardiin.com', '127.0.0.1']
 
 
 # Application definition
@@ -101,6 +101,7 @@ PROD_DB = {
 }
 
 DATABASES = DEBUG_DB if DEBUG else PROD_DB
+# DATABASES = PROD_DB
 
 
 # Password validation
