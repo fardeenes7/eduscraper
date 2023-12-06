@@ -21,7 +21,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "eduscraperss/wsgi.py"
+            "dest": "eduscraper/wsgi.py"
         }
     ]
 }

@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'eduscraper.wsgi.app'
+WSGI_APPLICATION = 'eduscraper.wsgi.application'
 
 
 # Database
